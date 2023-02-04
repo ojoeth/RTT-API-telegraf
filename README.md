@@ -23,6 +23,6 @@ commands = [ "/bin/bash /opt/RTT_API/run.sh rttapi_username rttapi_password stat
 
 ```
 
-- replace /opt/RTT_API/run.sh with the location of this repository
+- replace /opt/RTT_API/run.sh with the location of run.sh in this repository
 - replace rttapi_username and rttapi_password with your credentials from https://api.rtt.io
 - replace stationcode with the station code of the station you wish to monitor (eg: bex for Bexhill). Find a list here: https://www.nationalrail.co.uk/stations_destinations/48541.aspx
