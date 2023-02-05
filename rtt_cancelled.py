@@ -11,7 +11,7 @@ if len(sys.argv) < 4:
 user = sys.argv[1]
 password = sys.argv[2]
 station = sys.argv[3]
-session.auth = (user, password)
+session.auth = (user, password) 
 
 # Check if credentials valid
 if (session.get("https://api.rtt.io/api/v1/json/search/").status_code == 401):
@@ -63,13 +63,15 @@ def fetchForHour(date_time):
     for service in lineup["services"]:
         if str(service["locationDetail"]["gbttBookedDeparture"])[0:2] == str(date_time.hour):
             if service["isPassenger"]:  
-                if service["locationDetail"]["displayAs"] == "CALL" or service["locationDetail"]["displayAs"] == "ORIGIN":
-                    runningcount += 1
-                elif (int(service["locationDetail"]["realtimeDeparture"]) - int(service["locationDetail"]["gbttBookedDeparture"]) >= 2):
-                    latecount += 1
                 if service["locationDetail"]["displayAs"] == "CANCELLED_CALL":
                     cancelledcount += 1
+                elif (int(service["locationDetail"]["realtimeDeparture"]) - int(service["locationDetail"]["gbttBookedDeparture"]) >= 2):
+                    latecount += 1
+                elif service["locationDetail"]["displayAs"] == "CALL" or service["locationDetail"]["displayAs"] == "ORIGIN":
+                    runningcount += 1
                 totalcount += 1
+
+
     return cancelledcount, runningcount, latecount, totalcount
 
 
