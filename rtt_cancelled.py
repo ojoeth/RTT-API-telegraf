@@ -62,7 +62,7 @@ def fetchForHour(date_time):
     totalcount = 0
     for service in lineup["services"]:
         if str(service["locationDetail"]["gbttBookedDeparture"])[0:2] == str(date_time.hour):
-            if service["isPassenger"]:  
+            if service["isPassenger"] and service["serviceType"] == "train":  
                 if service["locationDetail"]["displayAs"] == "CANCELLED_CALL":
                     cancelledcount += 1
                 elif (int(service["locationDetail"]["realtimeDeparture"]) - int(service["locationDetail"]["gbttBookedDeparture"]) >= 2):
